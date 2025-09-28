@@ -15,6 +15,23 @@
 * Verification  MD5: 3defe10c68be87df7c5bc94edc1113cf  
 * Verification SHA1: 63a6a6d761231e894852b142b4e31d2aee87d1d0  
 * Unique Description: Wilfred Wood's Memory Dump    
+
+PS C:\Users\vladk\Desktop\FinalWorkSecurity\DumpRAMforensic\Tools> .\volatility_2.6_win64_standalone.exe -f "C:\Users\vladk\Desktop\FinalWorkSecurity\FinalWorkTrackForensics\Incident.mem" imageinfo
+Volatility Foundation Volatility Framework 2.6
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x86_23418, Win7SP0x86, Win7SP1x86
+                     AS Layer1 : IA32PagedMemoryPae (Kernel AS)
+                     AS Layer2 : FileAddressSpace (C:\Users\vladk\Desktop\FinalWorkSecurity\FinalWorkTrackForensics\Incident.mem)
+                      PAE type : PAE
+                           DTB : 0x185000L
+                          KDBG : 0x82745de8L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0x80b96000L
+             KUSER_SHARED_DATA : 0xffdf0000L
+           Image date and time : 2019-03-10 13:06:28 UTC+0000
+     Image local date and time : 2019-03-10 06:06:28 -0700
+
   
 #### Dump жесткого диска - побитовая копия диска  
 * Файл - Wood.E01 (побитовая копия диска)  
