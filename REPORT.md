@@ -10,19 +10,19 @@
 
 ### Общая информация о представленных данных (evidencies)  
 #### Dump оперативной памяти 
-Файл - incident.mem (дамп оперативной памяти)
-Type файла: MEM
-Verification  MD5: 3defe10c68be87df7c5bc94edc1113cf 
-Verification SHA1: 63a6a6d761231e894852b142b4e31d2aee87d1d0 
-Unique Description: Wilfred Wood's Memory Dump  
-
-#### Dump жесткого диска - побитовая копия диска
-Файл - Wood.E01 (побитовая копия диска)
-Type файла: E01 
-Verification MD5: 84648ad119e390f8cf2201a145c5d8ba 
+Файл - incident.mem (дамп оперативной памяти)  
+Type файла: MEM  
+Verification  MD5: 3defe10c68be87df7c5bc94edc1113cf  
+Verification SHA1: 63a6a6d761231e894852b142b4e31d2aee87d1d0   
+Unique Description: Wilfred Wood's Memory Dump    
+  
+#### Dump жесткого диска - побитовая копия диска  
+Файл - Wood.E01 (побитовая копия диска)  
+Type файла: E01  
+Verification MD5: 84648ad119e390f8cf2201a145c5d8ba  
 Verification SHA1: 0e52068110899a5279eeb7617fb7ace089fde135 
-Unique Description: Wilfred Wood's PC
-
+Unique Description: Wilfred Wood's PC  
+  
 ### Задача
 Составить подробный отчёт о проведённом расследовании. Он должен включать себя информацию, подкреплённую доказательствами в виде скриншотов:
 * обнаруженные следы атакующих;
