@@ -11,7 +11,8 @@
 ## Общая информация о представленных данных (evidencies)  
 #### Dump оперативной памяти 
 * Файл - incident.mem (дамп оперативной памяти)  
-* Type файла: MEM  
+* Type файла: MEM
+* 
 * Image date and time : 2019-03-10 13:06:28 UTC+0000  
 * Image local date and time : 2019-03-10 06:06:28 -0700    
   
