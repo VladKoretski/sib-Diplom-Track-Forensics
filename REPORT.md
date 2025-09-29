@@ -11,26 +11,13 @@
 ### Общая информация о представленных данных (evidencies)  
 #### Dump оперативной памяти 
 * Файл - incident.mem (дамп оперативной памяти)  
-* Type файла: MEM  
+* Type файла: MEM
+* Image date and time : 2019-03-10 13:06:28 UTC+0000
+* Image local date and time : 2019-03-10 06:06:28 -0700  
+  
 * Verification  MD5: 3defe10c68be87df7c5bc94edc1113cf  
 * Verification SHA1: 63a6a6d761231e894852b142b4e31d2aee87d1d0  
-* Unique Description: Wilfred Wood's Memory Dump    
-
-PS C:\Users\vladk\Desktop\FinalWorkSecurity\DumpRAMforensic\Tools> .\volatility_2.6_win64_standalone.exe -f "C:\Users\vladk\Desktop\FinalWorkSecurity\FinalWorkTrackForensics\Incident.mem" imageinfo
-Volatility Foundation Volatility Framework 2.6
-INFO    : volatility.debug    : Determining profile based on KDBG search...
-          Suggested Profile(s) : Win7SP1x86_23418, Win7SP0x86, Win7SP1x86
-                     AS Layer1 : IA32PagedMemoryPae (Kernel AS)
-                     AS Layer2 : FileAddressSpace (C:\Users\vladk\Desktop\FinalWorkSecurity\FinalWorkTrackForensics\Incident.mem)
-                      PAE type : PAE
-                           DTB : 0x185000L
-                          KDBG : 0x82745de8L
-          Number of Processors : 1
-     Image Type (Service Pack) : 1
-                KPCR for CPU 0 : 0x80b96000L
-             KUSER_SHARED_DATA : 0xffdf0000L
-           Image date and time : 2019-03-10 13:06:28 UTC+0000
-     Image local date and time : 2019-03-10 06:06:28 -0700
+* Unique Description: Wilfred Wood's Memory Dump
 
   
 #### Dump жесткого диска - побитовая копия диска  
@@ -47,8 +34,27 @@ INFO    : volatility.debug    : Determining profile based on KDBG search...
 * маппинг действий атакующих по матрице MITRE ATT&CK;
 * предложения по ликвидации последствий и восстановлению.
 
-### Пример структуры отчёта
-  1.    Характеристика инцидента.    
+### 1. Характеристика инцидента
+#### Начальный доступ (Initial Access)
+Злоумышленники с помощью фишинговой рассылки получили доступ к сетевой инфраструктуре, отправив архив Refund_form.zip. Пользователь разархивировал файл и запустил. После этого был выполнен powershell скрипт закодированный по стандарту base64.
+
+#### Исполнение (Execution)
+С помощью вредоносной программы злоумышленники могли осуществлять сбор информации о системе. Кроме установки дополнительных программ и обновлений было запущено скачивание по-видимому вредоносных программ с ресурса http://www.sendspase.com.
+Дальнейшее закрепление в системе осуществлялось путем манипуляций с планировщиков и в реестре операционной системы.
+
+#### Повышение привилегий (Privilege Escalation)
+Атакующие совершают успешное удаленное подключение от имени локального пользователя Wilfred. Поскольку пользователь Wilfred является локальным администратором у атакующих появился соответствующий контроль над системой. 
+
+#### Обход защиты (Defence Evasion)
+В ходе атаки был создан новый пользователь - Support с повышенными привилегиями, под которым выполнялись многие следующие действия. 
+
+#### Закрепление (Persistence)
+Для дальнейшего закрепления пользователь  Support манипулирует с планировщиком задач - Task Scheduler, в результате чего запускается вредоносный скрипт Update.bat, ограничиваются возможности сканера Windows Defender. В ходе этого позволяет исследуются архитектура сети, порты TCP/UDP, сервисы на них, собирается информация через сетевые протокола.
+
+#### Утечка данных (Exfiltration)
+Для организации утечки информации использовался ресурс https://www.sendspace.com/.
+
+  
   2.    Описание инцидента по матрице MITRE ATT&CK.    
     2.1.    Первоначальное проникновение (Initial Access).    
     2.2.    ***************    
