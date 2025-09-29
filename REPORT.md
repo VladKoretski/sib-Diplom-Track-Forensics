@@ -67,7 +67,7 @@
 | Этап атаки  | ID техники |  Техника  | Комментарии |
 |-----------|---------|----------|-----------|
 | Initial Access (Первоначальный доступ) |	T1566.001 | Phishing:Spearphishing Attachment | Фишинговое письмо с архивом Refund_form.zip, содержащим вредоносный файл |
-|Execution (Выполнение)|T1204.002| User Execution: Malicious File	| “Refund_form.lnk” - архив замаскированный под файл “WordPad” содержащий вредоносный скрипт |
+|Execution (Выполнение)|T1204.002| User Execution: Malicious File	| Обнаружен файл Refund_form.lnk, архив замаскированный под файл типа WordPad, содержащий вредоносный скрипт |
 |Persistence (Закрепление)|T1053.005|	Scheduled Task/Job: Scheduled Task|Создание задач с регулярным выполнением|
 |Persistence (Закрепление)|T1136|Create Account|Создание пользователя Support|
 |Privilege Escalation (Повышение привилегий)|T1078.003|Valid Accounts: Local Accounts| Получение доступа к аккаунту легитимного пользователя Wilfred|
