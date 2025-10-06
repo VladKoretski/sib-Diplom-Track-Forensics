@@ -53,8 +53,6 @@
 
 ![Рис. 1. История браузера Internet Explorer](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig1.png "Рис. 1. История браузера Internet Explorer"). 
  
-Рис. 1. История браузера Internet Explorer
-
 Загруженный файл обнаружен в папке downloads пользователя Wilford (Рис. 2). Там же находится папка Refund_form, в которой присутствует ярлык Refund_form.lnk.
 
  
