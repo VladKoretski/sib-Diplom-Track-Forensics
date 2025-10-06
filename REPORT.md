@@ -75,7 +75,7 @@
 |Credential Access (Получение учетных данных)|T1555.003|Credentials from Password Stores: Credentials from Web Browsers|Атакующие испольщовали файл с паролями пользователя passwords.txt, использование утилиты Iepv|
 |Discovery (Исследование)|T1046|Network Service Discovery|Использование Netscan|
 |Discovery (Исследование)|T1135|Network Share Discovery|Использование Netscan|
-|Command and Control (Управление и Контроль)|T1219|Remote Access Software|Использование утилиты RDP Wrapper|
+|Command and Control (Управление и Контроль)|T1219|Remote Access Software|Удаленное подключение под пользоватлем Wilford|
 |Exfiltration (Эксфильтрация данных)|T1567.002|Exfiltration Over Web Service: Exfiltration to Cloud Storage|Использование ресурса <span></span>Sendspace.com|
 
 ## 3. Рекомендации по ликвидации последствий инцидента и восстановлению.   
