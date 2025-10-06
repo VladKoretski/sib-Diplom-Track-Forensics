@@ -191,54 +191,56 @@ Account Created : 2019-03-09 14:17:41Z
 |Вспомогательная технология|Process Injection||T1055|
 
 Чтобы снизить вероятность своего обнаружения злоумышленники создали нового пользователя – Support с административными правами. Это подтверждается информацией из файла реестра SAM (Рис. 20).
- 
-Рис. 20. Информация о пользователе Support из файла SAM 
 
+![Рис. 20. Информация о пользователе Support из файла SAM](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig20.png "Рис. 20. Информация о пользователе Support из файла SAM")
+*Рис. 20. Информация о пользователе Support из файла SAM*
+ 
 Пользователя создали под учетной записью Wilfred (Рис. 21), что следует из журнала событий Security.
 
- 
-Рис. 21. Событие 4720 журнала Security – создание пользователя Support
+![Рис. 21. Событие 4720 журнала Security – создание пользователя Support](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig21.png "Рис. 21. Событие 4720 журнала Security – создание пользователя Support")
+*Рис. 21. Событие 4720 журнала Security – создание пользователя Support* 
 
 Далее Support осуществляет логин под своим паролем, что следует из hashdump dum RAM (Рис. 22).
- 
-Рис. 22. Hash Dump извлеченный из Dump оперативной памяти
 
-Анализируя приведенные хэши, модно сделать несколько выводов относительно паролей и настроек безопасности в системе. Обе учетные записи ("Wilfred" и "Support") имеют одинаковые LM-хэши:
-aad3b435b51404eeaad3b435b51404ee. Это стандартный LM-хэш пустой строки или пароля длиной менее 14 символов. Причина проста: LM-хэш обрабатывает пароль таким образом, что, если пароль короче 14 символов, он дополняется нулями до длины 14 символов, а затем разделяется на две части по 7 символов. Эти части преобразуются в верхний регистр и шифруются отдельно. Поскольку оба пользователя имеют короткие пароли, первые 7 символов обеих частей будут одинаковыми (или нулевыми). Тем самым, пароль у Wilfrod хранится в обычном текстовом файле и по сути никак не защищен, даже по уровню сложности.
-Пользователь Support «совершает» ряд действий. Запускает ряд утилит. В ntuser.dat пользователя Support содержатся, например, следующие записи:
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\SnippingTool.exe (10)
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\calc.exe (9)
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\mspaint.exe (8)
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\xpsrchvw.exe (7)
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\WFS.exe (6)
-  {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\magnify.exe (5).
-Под пользователем Support, также осуществляются манипуляции с планировщиком задач.
-Кроме того, выявлено, что нижеследующие процессы запускаются с избыточными правами (информация получена из dump оперативной памяти утилитой volatility malfind) (наличие флага PAGE_EXECUTE_READWRITE): 
-1 раз присутствует в отчете volatility malfind: 
-Process: svchost.exe Pid: 876 Address: 0x220000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6
-2 раза присутствует в отчете volatility malfinad:
-Process: svchost.exe Pid: 2604 Address: 0x4d40000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 128, MemCommit: 1, PrivateMemory: 1, Protection: 6
-2 раза присутствует в отчете volatility malfinad:
-Process: explorer.exe Pid: 3484 Address: 0x3840000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6
-5 раз присутствует в отчете volatility malfinad:
-Process: powershell.exe Pid: 3672 Address: 0x13e0000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
-3 раза присутствует в отчете volatility malfinad:
-Process: iexplore.exe Pid: 992 Address: 0x2bc0000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6
-1 раз присутствует в отчете volatility malfinad:
-Process: WmiPrvSE.exe Pid: 2480 Address: 0x1a50000
-Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE
-Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
+![Рис. 22. Hash Dump извлеченный из Dump оперативной памяти](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig22.png "Рис. 22. Hash Dump извлеченный из Dump оперативной памяти")
+*Рис. 22. Hash Dump извлеченный из Dump оперативной памяти*  
 
+Анализируя приведенные хэши, модно сделать несколько выводов относительно паролей и настроек безопасности в системе. Обе учетные записи ("Wilfred" и "Support") имеют одинаковые LM-хэши: aad3b435b51404eeaad3b435b51404ee.  
+Это стандартный LM-хэш пустой строки или пароля длиной менее 14 символов. Причина проста: LM-хэш обрабатывает пароль таким образом, что, если пароль короче 14 символов, он дополняется нулями до длины 14 символов, а затем разделяется на две части по 7 символов. Эти части преобразуются в верхний регистр и шифруются отдельно. Поскольку оба пользователя имеют короткие пароли, первые 7 символов обеих частей будут одинаковыми (или нулевыми). Тем самым, пароль у Wilfrod хранится в обычном текстовом файле и по сути никак не защищен, даже по уровню сложности.  
+Пользователь Support «совершает» ряд действий. Запускает ряд утилит. В ntuser.dat пользователя Support содержатся, например, следующие записи:  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\SnippingTool.exe (10)  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\calc.exe (9)  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\mspaint.exe (8)  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\xpsrchvw.exe (7)  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\WFS.exe (6)  
+  * {D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}\magnify.exe (5).  
+Под пользователем Support, также осуществляются манипуляции с планировщиком задач.  
+Кроме того, выявлено, что нижеследующие процессы запускаются с избыточными правами (информация получена из dump оперативной памяти утилитой volatility malfind) (наличие флага PAGE_EXECUTE_READWRITE):  
+* 1 раз присутствует в отчете volatility malfind:  
+Process: svchost.exe Pid: 876 Address: 0x220000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6  
+* 2 раза присутствует в отчете volatility malfinad:  
+Process: svchost.exe Pid: 2604 Address: 0x4d40000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 128, MemCommit: 1, PrivateMemory: 1, Protection: 6  
+* 2 раза присутствует в отчете volatility malfinad:  
+Process: explorer.exe Pid: 3484 Address: 0x3840000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6  
+* 5 раз присутствует в отчете volatility malfinad:  
+Process: powershell.exe Pid: 3672 Address: 0x13e0000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6  
+* 3 раза присутствует в отчете volatility malfinad:  
+Process: iexplore.exe Pid: 992 Address: 0x2bc0000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6  
+* 1 раз присутствует в отчете volatility malfinad:  
+Process: WmiPrvSE.exe Pid: 2480 Address: 0x1a50000  
+Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
+Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6  
+  
 ## 2.5.	Закрепление (Persistence)
 
 |MitreAtt&ck technique|Название|Подтехника|ID|
@@ -247,43 +249,50 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 |Вспомогательная технология|Exploitation for Defense Evasion||T1211|
 
 Для дальнейшего закрепления пользователь Support манипулирует с планировщиком задач - Task Scheduler, в результате чего запускается вредоносный скрипт Updater.bat, ограничиваются возможности сканера Windows Defender (Рис. 23). 
- 
-Рис. 23. Настройка планировщика задач для запуска утилиты Updater.bat
 
-В качестве вспомогательной техники используется технология Exploitation for Defense Evasion (T1211) - за счет нее был обновлен Defender. 
-Основные показатели: 
-Дата и время: 2019-03-10, 05:56:46
-Автор изменений: Support 
-Триггер привязан к календарю: 2019-03-10, 09:00:00
-Сканирование запланировано в ежедневном режиме: 
-<ScheduleByDay>
-<DaysInterval>1</DaysInterval>
-</ScheduleByDay>
-Процесс запускается консольной команой
-<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command>
-      <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>
-Подозрительным выглядит запуск в скрытом режиме.
-В настройках задач обнаруживается запланированная работа -RestrictPriviligesScan
- 
-Рис. 24. Ограничение возможностей сканирования Defender
+![Рис. 23. Настройка планировщика задач для запуска утилиты Updater.bat](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig23.png "Рис. 23. Настройка планировщика задач для запуска утилиты Updater.bat")
+*Рис. 23. Настройка планировщика задач для запуска утилиты Updater.bat*  
 
+В качестве вспомогательной техники используется технология Exploitation for Defense Evasion (T1211) - за счет нее был обновлен Defender.  
+Основные показатели:  
+Дата и время: 2019-03-10, 05:56:46  
+Автор изменений: Support  
+Триггер привязан к календарю: 2019-03-10, 09:00:00  
+Сканирование запланировано в ежедневном режиме:  
+<ScheduleByDay>  
+<DaysInterval>1</DaysInterval>  
+</ScheduleByDay>  
+Процесс запускается консольной команой  
+<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>  
+Подозрительным выглядит запуск в скрытом режиме.  
+В настройках задач обнаруживается запланированная работа -RestrictPriviligesScan  
+  
+![Рис. 24. Ограничение возможностей сканирования Defender](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig24.png "Рис. 24. Ограничение возможностей сканирования Defender")
+*Рис. 24. Ограничение возможностей сканирования Defender*  
+  
 В соответствии с планировщиком, запуск был совершен под аккаунтом Wilfred, что показывает анализ dump оперативной памяти (Рис. 25).
- 
-Рис. 25. Запуск утилиты Updater 
 
-Сам запускаемый планировщиком файл локализован в одной из папок пользователя Wilfred.
- 
-Рис. 25. Локализация файла Updater
+![Рис. 25. Запуск утилиты Updater](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig25.png "Рис. 25. Запуск утилиты Updater")
+*Рис. 25. Запуск утилиты Updater*  
+  
+Сам запускаемый планировщиком файл локализован в одной из папок пользователя Wilfred (Рис. 26).  
 
-Анализ Updater.bat по его hash сервисом virustotal показал, что это malware.
+![Рис. 26. Локализация файла Updater](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig26.png "Рис. 26. Локализация файла Updater")
+*Рис. 26. Локализация файла Updater*  
  
-Рис. 25. Информация о Updater.bat по данным Virustotal
+Анализ Updater.bat по его hash сервисом virustotal показал, что это malware (Рис. 27).
 
-Представленный сервисом паттерн поведения утилиты Updater.bat коррелирует с ранее выявленным IP адресам, с которого осуществлялось TCP/IP сканирование (Рис. 26). Кроме того, его запуск осуществляется как powershell script (Рис. 27).
- 
-Рис. 26. Паттерн поведения Updater. bat
- 
-Рис. 27. Powershell-script запуска Updater.bat и запускаемые утилитой процесс
+![Рис. 27. Информация о Updater.bat по данным Virustotal](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig27.png "Рис. 27. Информация о Updater.bat по данным Virustotal")
+*Рис. 27. Информация о Updater.bat по данным Virustotal*  
+
+
+Представленный сервисом паттерн поведения утилиты Updater.bat коррелирует с ранее выявленным IP адресам, с которого осуществлялось TCP/IP сканирование (Рис. 28). Кроме того, его запуск осуществляется как powershell script (Рис. 29).
+
+![Рис. 28. Паттерн поведения Updater.bat](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig28.png "Рис. 28. Паттерн поведения Updater.bat")
+*Рис. 28. Паттерн поведения Updater.bat*  
+
+![Рис. 29. Powershell-script запуска Updater.bat и запускаемые утилитой процесс](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig29.png "Рис. 29. Powershell-script запуска Updater.bat и запускаемые утилитой процесс")
+*Рис. 29. Powershell-script запуска Updater.bat и запускаемые утилитой процесс*  
 
 Процессы, которые представлены на рис. 26 подтверждают сделанные выводы из анализа dump оперативной памяти по поводу инъекций процессов. 
 Кроме того, выявлен процесс taskhost.exe, в котором реализуется взаимодействие с ресурсом sendspace. 
@@ -292,10 +301,11 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 |MitreAtt&ck technique|Название|Подтехника|ID|
 |------|-----|-----|----|
 |Основная|Exfiltration (Эксфильтрация данных)|Exfiltration Over Web Service: Exfiltration to Cloud Storage|T1567.002|
-Как выяснилось, для организации утечки информации использовался ресурс www.sendspase.com – ресурс для обмена файлами, в том числе и большими (рис. 28).
+Как выяснилось, для организации утечки информации использовался ресурс www.sendspase.com – ресурс для обмена файлами, в том числе и большими (рис. 30).
 
- 
-Рис. 28. Из истории браузера Internet Explorer 
+![Рис. 30. Из истории браузера Internet Explorer ](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig30.png "Рис. 30. Из истории браузера Internet Explorer ")
+*Рис. 30. Из истории браузера Internet Explorer *   
+
 Утилита volatility yarascan.txt c правилом yara позволяла извлечь информацию о многочисленных обращениях к ресурсу процесса taskhost.exe (несколько десятков раз за 09.03.2019), который, хотя и является легитимным для операционной системы windows, но может быть использован как маскировка для многих malware-процессов.
 
 Rule: r1
@@ -316,18 +326,6 @@ Owner: Process taskhost.exe Pid 324
 0x0181e2d7  64 23 98 d6 d4 01 56 a1 64 23 98 d6 d4 01 ff ff   d#....V.d#......
 0x0181e2e7  ff ff ff ff ff 7f 00 00 00 00 00 00 00 00 86 c8   ................
 0x0181e2f7  64 23 98 d6 d4 01 00 00 00 00 00 00 00 00 00 00   d#..............
-
-
-
-
-Для повышения уровня защиты рекомендуется предпринять следующие шаги:
-1.	Отключить хранение LM-хэшей: LM-хэш легко взломать, особенно если пароль слабый. Его отключение значительно повысит безопасность.
-2.	Использовать длинные и сложные пароли: чем длиннее и сложнее пароль, тем труднее его подобрать.
-3.	Регулярная смена паролей: периодически меняйте пароли, чтобы минимизировать риски компрометации.
-Следуя этим рекомендациям, можно существенно повысить уровень безопасности вашей системы.
-
-
-
   
 ### 2.7. Маппинг действий атакующих по матрице MITRE ATT&CK
 Для наглядности инцидент далее представлен *маппинг действий атакующих по матрице MITRE ATT&CK* — в виде таблицы, отражающей соответствие тактики и техник, которые использовали атакующие в рамках исследуемого инцидента.
@@ -354,5 +352,7 @@ Owner: Process taskhost.exe Pid 324
 2. изменить аутентификационные данные скомпрометированного пользователя Wilfred;
 3. исследовать на предмет закрепления, кодовых инъекций, настроек пользователя другие элементы сетевой инфраструктуру;
 4. очистить от вредоносных файлов папки Temp, задач планировщика, особенно обращая на ярлыки файлов, архиво и .bat-файлам;
-5. отредактировать реестры;
-6. провести обучение персонала компании "X" на предмет фишинговых атак и безопасной работы с почтовыми ресурсами.
+5. провести редакцию реестров операционной системы;
+6. изменить политику по управлению паролями пользователей: отключить хранение LM-хэшей, использовать длинные и сложные пароли, регулярно менять пароли;
+7. запретить хранение конфиденциальной информации в открытых файлах, папках, в текстовом виде и прочее; 
+8. провести обучение персонала компании "X" на предмет фишинговых атак и безопасной работы с почтовыми ресурсами.
