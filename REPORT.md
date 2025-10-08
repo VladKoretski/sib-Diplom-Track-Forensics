@@ -49,11 +49,15 @@
 |------|-----|-----|----|
 |Основная|Fishing|Spearphishing Attachment|T1566.001|
 
+|----|---|
+|имя переменной|60|
+|bgf|gfbdf|
+
 Первоначально проникновение было осуществлено с помощью фишинговой рассылки – отправив архив Refund_form.zip. Архив загрузил пользователь Wilford с почтового сервера Яндекс (рис. 1).  
 
 ![Рис. 1. История браузера Internet Explorer](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig1.png "Рис.1. История браузера Internet Explorer") 
 *Рис.1. История браузера Internet Explorer*  
-  
+
 Загруженный файл обнаружен в папке downloads пользователя Wilford (Рис. 2). Там же находится папка Refund_form, в которой присутствует ярлык Refund_form.lnk.  
 
 ![Рис. 2. Папка download пользователя Wilford](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig2.png "Рис. 2. Папка download пользователя Wilford") 
