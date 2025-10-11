@@ -90,6 +90,7 @@
 ![Рис. 6. Timeliner с информацией о запуске malware](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig6.png "Рис. 6. Timeliner с информацией о запуске malware")  
 *Рис. 6. Timeliner с информацией о запуске malware* 
 
+Информация по ключу user_assist:
 |[USER ASSIST]| C:\Users\Wilfred\Downloads\Refund_form\Refund_form.lnk| Registry: \??\C:\Users\Wilfred\ntuser.dat /ID: N/A/Count: 1/FocusCount: 0/TimeFocused: 0:00:00.501000
 
 При анализе файла $MFT на предмет дальнейшей злонамеренной активности, выясняется, что именно он был запущен от имени пользователя Wilford первым в чреде дальнейшей подозрительной деятельности (рис. 7) по тайм-лайну.  
