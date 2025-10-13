@@ -299,6 +299,7 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 Подозрение на то, что атакующие изменили временные метки событий появилось после того как выяснились расхождения по времени загрузки файла "Refund_form.zip" и его запуска. Согласно timeliner извлеченному из dump оперативной памятие его запуск состоялся 2019-03-09 в 14:31:04 UTC+0000 (Рис. 6), а загружен он был почти через три часа после этого события 09.03.2019 в 17:25:50, согласно истории браузера Interent Explorer (Рис. 1 и Рис. 1a).
 Кроме того, запуск дополнительных утилит и программ, которые осуществляли сканирование рабочей станции и сети, согласно данным извлеченным из dump'ов жесткого диска и оперативной памяти не соответствуют друг другу:
 
+**Данные timeliner dump RAM**
 |File Name|	Extension| Created0x10|
 |--|--|--|
 |Refund_form.lnk	|.lnk	2019-03-09 |14:15:25.0000000|
@@ -310,6 +311,21 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 |netscan_portable (2).lnk|	.lnk	|2019-03-10 06:35:51.7193184|
 |iepv.lnk	|.lnk	|2019-03-10 06:40:02.2183584|
 
+**Данные timeliner dump RAM**
+|File Name|	Extension| Created0x10|
+|--|--|--|
+|Refund_form.lnk	|.lnk	2019-03-09 |14:15:25.0000000|
+|passwords.lnk	|.lnk	2019-03-09 |15:35:28.5847905|
+|System and Security.lnk	|.lnk	|2019-03-09 16:28:33.2476821|
+|Network and Internet.lnk|	.lnk	2019-03-09 16:34:43.4217094|
+|Temp.lnk	|.lnk	|2019-03-09 16:51:30.3823894|
+|netscan_portable.lnk	|.lnk|	2019-03-10 06:35:43.5392256|
+|netscan_portable (2).lnk|	.lnk	|2019-03-10 06:35:51.7193184|
+|iepv.lnk	|.lnk	|2019-03-10 06:40:02.2183584|
+
+При этом, появление ярлыков этих ресурсов по 
+
+<img width="2880" height="966" alt="image" src="https://github.com/user-attachments/assets/2d9fc557-1751-4e73-92ee-833667c3dac3" />
 
   
 ## 2.5.	Закрепление (Persistence)
