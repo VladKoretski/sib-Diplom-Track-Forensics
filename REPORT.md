@@ -332,24 +332,8 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 |netscan_portable (2).lnk|	.lnk	|2019-03-10 06:35:51.7193184|
 |iepv.lnk	|.lnk	|2019-03-10 06:40:02.2183584|
 
-**Данные timeliner dump RAM**
-|File Name|	Extension| Created0x10|
-|--|--|--|
-|Refund_form.lnk	|.lnk	2019-03-09 |14:15:25.0000000|
-|passwords.lnk	|.lnk	2019-03-09 |15:35:28.5847905|
-|System and Security.lnk	|.lnk	|2019-03-09 16:28:33.2476821|
-|Network and Internet.lnk|	.lnk	2019-03-09 16:34:43.4217094|
-|Temp.lnk	|.lnk	|2019-03-09 16:51:30.3823894|
-|netscan_portable.lnk	|.lnk|	2019-03-10 06:35:43.5392256|
-|netscan_portable (2).lnk|	.lnk	|2019-03-10 06:35:51.7193184|
-|iepv.lnk	|.lnk	|2019-03-10 06:40:02.2183584|
 
 При этом, появление ярлыков этих ресурсов по 
-
-
-<img width="2156" height="1235" alt="image" src="https://github.com/user-attachments/assets/a9303b7b-3f6a-45fa-9823-8bf34dbcca2d" />
-
-<img width="2207" height="1232" alt="image" src="https://github.com/user-attachments/assets/c6ba791b-49d7-4f34-9451-0a071579c9a0" />
 
   
 ## 2.5.	Закрепление (Persistence)
