@@ -109,9 +109,9 @@
 ![Рис. 8. Powershell script запускаемые при работе Refund_form](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig8.png "Рис. 8. Powershell script запускаемые при работе Refund_form")  
 *Рис. 8. Powershell script запускаемые при работе Refund_form*  
 
-**Обращает на себя внимание несоответствие временных меток событий. Из анализа dump оперативной памяти запуск состоялся 03.09.2019 в 14:15:25, загрузка файла "имела место" в 17:25: 
+**Обращает на себя внимание несоответствие временных меток событий. Из анализа dump оперативной памяти и NTUSER.dat запуск состоялся 03.09.2019 в 14:15:25, а загрузка файла "имела место" в 17:25:50**
 
-В соответствии с отчетом Cape при выполнении скрипта запускаются сервисы:
+В соответствии с отчетом CAPE при выполнении скрипта запускаются сервисы:
 * Started Services
 * WSearch
 * SecurityHealthService
@@ -262,7 +262,19 @@ Flags: CommitCharge: 2, MemCommit: 1, PrivateMemory: 1, Protection: 6
 * 1 раз присутствует в отчете volatility malfinad:  
 Process: WmiPrvSE.exe Pid: 2480 Address: 0x1a50000  
 Vad Tag: VadS Protection: PAGE_EXECUTE_READWRITE  
-Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6  
+Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
+
+Кроме того, в целях сокрытия следова на атакованном компьютере было удалено множество файлов в период атаки (Рис. 22a, 22b) -  более 500 с 09.03.2019 по 10.03.2019. 
+
+![Рис. 22a. Свидетельство об удалении файлов (удаленные префетч-файлы)](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig22a.png "Рис. 22a. Свидетельство об удалении файлов (удаленные префетч-файлы)")
+*Рис. 22a. Свидетельство об удалении файлов (удаленные префетч-файлы)*  
+
+![Рис. 22b. Свидетельство об удалении файлов (удаленные префетч-файлы)](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig22a.png "Рис. 22a. Свидетельство об удалении файлов (удаленные префетч-файлы)")
+*Рис. 22b. Свидетельство об удалении файлов (удаленные файлы по результатм анализа Autopsy)* 
+
+### 2.4.1 Изменение меток времени
+
+
   
 ## 2.5.	Закрепление (Persistence)
 
@@ -304,7 +316,6 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 
 ![Рис. 27. Информация о Updater.bat по данным Virustotal](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig27.png "Рис. 27. Информация о Updater.bat по данным Virustotal")
 *Рис. 27. Информация о Updater.bat по данным Virustotal*  
-
 
 Представленный сервисом паттерн поведения утилиты Updater.bat коррелирует с ранее выявленным IP адресам, с которого осуществлялось TCP/IP сканирование (Рис. 28). Кроме того, его запуск осуществляется как powershell script (Рис. 29).
 
