@@ -189,6 +189,22 @@
 ![Рис. 18. Удаленное подключение от имени пользователя Wilfred](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig18.png "Рис. 18. Удаленное подключение от имени пользователя Wilfred")
 *Рис. 18. Удаленное подключение от имени пользователя Wilfred*
 
+По информации из SOFTWARE.dat на рабочей станции была установленные программа RDP Wrapper Library:
+
+*User SID: S-1-5-21-3583694148-1414552638-2922671848-1003* 
+*LastWrite: 2019-03-09 16:36:29Z*
+*20190309 - RDP Wrapper Library 1.6.2 (Stas'M Corp. and contributors)*  
+
+a также записи 
+
+*Launching tracing v.20200511*  
+*Microsoft\Tracing*  
+*2019-03-09 14:20:28Z       Explorer_RASAPI32*
+*2019-03-09 14:18:16Z       ie4uinit_RASAPI32*
+*2019-03-10 06:57:35Z       iexplore_RASAPI32*                                 
+  
+Ключи Tracing Explorer_RASAPI32 в реестре Windows указывает на то, что какое-то приложение (законное или нет) впервые попыталось установить сетевое соединение для загрузки файлов. Ключи «RASAPI32» и «RASMANCS» создаются, когда приложение взаимодействует с API удалённого доступа (rasapi32.dll) и менеджером соединений удалённого доступа (rasman.dll). Таким образом, наличие ключей «RASAPI32» и «RASMANCS» может указывать на попытки приложений установить сетевые соединения.  
+
 Таким образом, можно сделать вывод, что атакующие получили контроль на над системой, завладев данным пользователя Wilfred, который является администратором:
 Данные из файла SAM:
 Username        : Wilfred [1003]
@@ -325,7 +341,6 @@ Flags: CommitCharge: 1, PrivateMemory: 1, Protection: 6
 
 При этом, появление ярлыков этих ресурсов по 
 
-<img width="2880" height="966" alt="image" src="https://github.com/user-attachments/assets/2d9fc557-1751-4e73-92ee-833667c3dac3" />
 
   
 ## 2.5.	Закрепление (Persistence)
