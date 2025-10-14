@@ -66,7 +66,7 @@
 ![Рис. 2. Папка download пользователя Wilford](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig2.png "Рис. 2. Папка download пользователя Wilford") 
 *Рис. 2. Папка download пользователя Wilford*
 
-При попытке работы с ним Defender рабочей Windows сообщает об угрозе (Рис. 3).  
+При попытке работы с ним Defender хостовой рабочей станции с OS Windows 11 сообщает об угрозе (Рис. 3).  
 
 ![Рис. 3. Сообщения об угрозе при работе с файлом Refund_form.lnk](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig3.png "Рис. 3. Сообщения об угрозе при работе с файлом Refund_form.lnk")  
 *Рис. 3. Сообщения об угрозе при работе с файлом Refund_form.lnk*
