@@ -133,7 +133,7 @@
 ![Рис. 10. Анализ исполняемого файла netscan.exe](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig10.png "Рис. 10. Анализ исполняемого файла netscan.exe")  
 *Рис. 10. Анализ исполняемого файла netscan.exe*  
   
-То есть, можно предположить, что в качестве дополнительных технологий Mitre Att&ck использовались технологии Discovery (Исследование) Network Service Discovery (T1046) и Network Share Discovery (T1135). 
+То есть, можно предположить, что в качестве дополнительных технологий Mitre Att&ck использовались технологии Discovery (Исследование) Network Service Discovery (T1046) и Password Policy Discovery, T1201. 
 Кроме того, подозрительно выглядят запуски, которые хотя и легитимных сервисов, но в контексте происходящего, могут свидетельствующих о возможности редактирования реестра и утановки каких-то дополнительных приложений:  
 
 * *2019-03-09 16:57:13Z {F38BF404-1D43-42F2-9305-67DE0B28FC23}\regedit.exe (2)*
@@ -453,7 +453,7 @@ Owner: Process taskhost.exe Pid 324
 |Defense Evasion (Предотвращение обнаружения)|T1070|Indicator Removal|Удаление файлов и манипуляции с временными метками|
 |Credential Access (Получение учетных данных)|T1555.003|Credentials from Password Stores: Credentials from Web Browsers|Атакующие испольщовали файл с паролями пользователя passwords.txt, использование утилиты Iepv|
 |Discovery (Исследование)|T1046|Network Service Discovery|Использование Netscan|
-|Discovery (Исследование)|T1135|Network Share Discovery|Использование Netscan|
+|Discovery (Исследование)|T1201|Password Policy Discovery|Использование Iepv|
 |Command and Control (Управление и Контроль)|T1219|Remote Access Software|Удаленное подключение под пользоватлем Wilford|
 |Exfiltration (Эксфильтрация данных)|T1567.002|Exfiltration Over Web Service: Exfiltration to Cloud Storage|Использование ресурса <span></span>Sendspace.com|
 
