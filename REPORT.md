@@ -280,8 +280,8 @@ a также записи:
 Далее осуществляется повышение привилегий пользователя Support и включение в группу с поддержкой безопасности (Рис. 21а).  
 
 <img width="2060" height="1128" alt="image" src="https://github.com/user-attachments/assets/01dc6dc9-66eb-4e1a-aa7a-d6e97f73c87b" />
-*Рис. 21а. Включение пользователя Support в группу с поддержкой безопасности* 
-
+*Рис. 21а. Включение пользователя Support в группу с поддержкой безопасности*  
+  
 Далее Support осуществляет логин со своим паролем, что следует при анализа dump RAM с помощью утилиты hashdump  (Рис. 22). Это подтверждается и записями журнала Security.
 
 ![Рис. 22. Hash Dump извлеченный из Dump оперативной памяти](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig22.png "Рис. 22. Hash Dump извлеченный из Dump оперативной памяти")
