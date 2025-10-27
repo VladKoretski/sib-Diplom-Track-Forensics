@@ -3,7 +3,7 @@
 ### Корецкий Владимир Павлович  
 Уважаемые преподаватели. Я делал работу: 
 <img width="2865" height="1402" alt="image" src="https://github.com/user-attachments/assets/5c45f074-83d2-4553-80ba-1ccd283a4f57" />
-<img width="2865" height="1402" alt="image" src="https://github.com/user-attachments/assets/ec06737b-bdbf-4c89-a87d-bd4f46f15187" />
+<img width="2865" height="1402" alt="image" src="https://github.com/user-attachments/assets/d0429725-e920-43ea-9603-518f81258805" />
 
 ## Описание инцидента
 Службой безопасности компании «Х» была зафиксирована подозрительная сетевая активность. Вам нужно проанализировать ситуацию, расследовать инцидент и найти следы активности атакующих.
