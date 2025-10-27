@@ -4,6 +4,7 @@
 Уважаемые преподаватели. Я делал работу в предыдущем курсе и есть отметка о Зачете: 
 <img width="2865" height="1402" alt="image" src="https://github.com/user-attachments/assets/5c45f074-83d2-4553-80ba-1ccd283a4f57" />
 <img width="1994" height="806" alt="image" src="https://github.com/user-attachments/assets/a6027a3e-f382-40d3-b5b3-b3d17ee35dfc" />
+<img width="2834" height="842" alt="image" src="https://github.com/user-attachments/assets/19e1f2bb-0679-46e4-af3d-f9040931bc84" />
 
 ## Описание инцидента
 Службой безопасности компании «Х» была зафиксирована подозрительная сетевая активность. Вам нужно проанализировать ситуацию, расследовать инцидент и найти следы активности атакующих.
