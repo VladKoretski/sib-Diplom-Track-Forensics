@@ -453,6 +453,7 @@ MRU Time             |Modified             | Accessed             | Created     
 |MitreAtt&ck technique|Название|Подтехника|ID|
 |------|-----|-----|----|
 |Основная|Exfiltration (Эксфильтрация данных)|Exfiltration Over Web Service: Exfiltration to Cloud Storage|T1567.002|
+
 Как выяснилось, для организации утечки информации использовался ресурс www<span></span>.sendspase.com – ресурс для обмена файлами, в том числе и большими (рис. 30).
 
 ![Рис. 30. Из истории браузера Internet Explorer ](https://github.com/VladKoretski/sib-Diplom-Track-Forensics/blob/main/FWSfiles/fig30.png "Рис. 30. Из истории браузера Internet Explorer ")
